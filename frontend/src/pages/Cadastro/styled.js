@@ -1,6 +1,6 @@
-import styled from 'styled-components';
- 
-const Container = styled.div`
+import styled from "styled-components";
+
+export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,7 @@ const Container = styled.div`
   background-color: #f4f6f8;
 `;
 
-const Form = styled.form`
+export const Form = styled.form`
   background-color: #ffffff;
   padding: 30px;
   border-radius: 8px;
@@ -22,20 +22,20 @@ const Form = styled.form`
   }
 `;
 
-const Titulo = styled.h2`
+export const Titulo = styled.h2`
   text-align: center;
   margin-bottom: 20px;
   color: #333;
 `;
 
-const Label = styled.label`
+export const Label = styled.label`
   display: block;
   margin-bottom: 5px;
   font-weight: 600;
   color: #333;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -49,14 +49,14 @@ const Input = styled.input`
   }
 `;
 
-const Botao = styled.button`
+export const Botao = styled.button`
   width: 100%;
   padding: 12px;
-  background-color: ${({ disabled }) => (disabled ? '#cccccc' : '#0077cc')};
+  background-color: ${({ disabled }) => (disabled ? "#cccccc" : "#0077cc")};
   color: white;
   border: none;
   border-radius: 4px;
   font-weight: bold;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: background-color 0.3s ease;
 `;
