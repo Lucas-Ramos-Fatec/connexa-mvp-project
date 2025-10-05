@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Container, Form, Titulo, Label, Input, Botao } from "./styled";
 
@@ -10,6 +11,7 @@ const Cadastro = () => {
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState("");
   const [sucesso, setSucesso] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const emailValido =
@@ -32,10 +34,13 @@ const Cadastro = () => {
         senha,
       });
       if (response.status === 201 || response.status === 200) {
-        setSucesso("Cadastro realizado com sucesso!");
+        setSucesso("Cadastro realizado com sucesso! Redirecionando para login...");
         setNome("");
         setEmail("");
         setSenha("");
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
       } else {
         setErro("Falha ao cadastrar. Tente novamente.");
       }
