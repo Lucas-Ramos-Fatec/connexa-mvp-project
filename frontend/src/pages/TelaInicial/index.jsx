@@ -11,9 +11,11 @@ import {
 } from "./styles";
 import { Header } from "../../components/Header";
 import { Welcome } from "../../components/Welcome";
+import { useNavigate } from "react-router-dom";
 
 export const TelaInicial = () => {
   // --- State Hooks ---
+  const navigate = useNavigate();
   const [user] = useState({
     nome: "Usuário Exemplo",
     email: "exemplo@email.com",
@@ -23,9 +25,7 @@ export const TelaInicial = () => {
 
   // --- Funções de Lógica ---
   const navigateTo = (path) => {
-    // Em uma aplicação real, isso usaria um framework de roteamento (ex: React Router)
-    // Por enquanto, apenas simula a navegação
-    alert(`Navegando para: ${path}`);
+    navigate(path);
   };
 
   const handleUserUpdate = (e) => {
