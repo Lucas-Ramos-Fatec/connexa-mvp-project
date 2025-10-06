@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const HeaderContainer = styled.header`
+export const HeaderContainer = styled.header`
   width: 100%;
   padding: 20px 40px;
   background-color: #ffffff;
@@ -11,19 +11,19 @@ const HeaderContainer = styled.header`
   box-sizing: border-box;
 `;
 
-const UserInfo = styled.div`
+export const UserInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
 `;
 
-const UserName = styled.span`
+export const UserName = styled.span`
   font-size: 1rem;
   font-weight: bold;
   color: #333;
 `;
 
-const EditButton = styled.button`
+export const EditButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;

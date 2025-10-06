@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const WelcomeContainer = styled.main`
+export const WelcomeContainer = styled.main`
   flex: 1; /* Faz o conteúdo ocupar o espaço restante */
   display: flex;
   flex-direction: column;
@@ -10,13 +10,13 @@ const WelcomeContainer = styled.main`
   padding: 40px 20px;
 `;
 
-const WelcomeTitle = styled.h1`
+export const WelcomeTitle = styled.h1`
   font-size: 2.5rem;
   color: #2c3e50;
   margin-bottom: 15px;
 `;
 
-const WelcomeDescription = styled.p`
+export const WelcomeDescription = styled.p`
   font-size: 1.1rem;
   color: #34495e;
   max-width: 600px;
@@ -24,14 +24,14 @@ const WelcomeDescription = styled.p`
   margin-bottom: 40px;
 `;
 
-const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div`
   display: flex;
   gap: 20px;
   flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas menores */
   justify-content: center;
 `;
 
-const ActionButton = styled.button`
+export const ActionButton = styled.button`
   padding: 15px 30px;
   font-size: 1rem;
   font-weight: bold;
