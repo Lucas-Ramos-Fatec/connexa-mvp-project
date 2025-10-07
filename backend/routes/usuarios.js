@@ -4,9 +4,15 @@ const db = require('../database');
 
 const router = express.Router();
 
+
+// Lista de domínios institucionais permitidos
+const DOMINIOS_PERMITIDOS = [
+  '@fatec.sp.gov.br',
+  // Adicione outros domínios permitidos aqui
+];
+
 function validarEmailInstitucional(email) {
-  // Aceita apenas e-mails institucionais
-  return /@\w+\.edu(\.br)?$/.test(email);
+  return DOMINIOS_PERMITIDOS.some((dominio) => email.endsWith(dominio));
 }
 
 router.post('/', async (req, res) => {
@@ -16,7 +22,7 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ mensagem: 'Todos os campos são obrigatórios.' });
   }
   if (!validarEmailInstitucional(email)) {
-    return res.status(400).json({ mensagem: 'E-mail institucional inválido.' });
+    return res.status(400).json({ mensagem: 'E-mail institucional inválido. Use seu e-mail da faculdade.' });
   }
   if (senha.length < 6) {
     return res.status(400).json({ mensagem: 'Senha deve ter pelo menos 6 caracteres.' });
