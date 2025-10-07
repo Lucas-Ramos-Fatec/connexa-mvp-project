@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Container, Form, Titulo, Label, Input, Botao } from "./styled";
+import { Container, Form, Titulo, Label, Input, Botao } from "./styles";
 
 const Cadastro = () => {
   const [nome, setNome] = useState("");
