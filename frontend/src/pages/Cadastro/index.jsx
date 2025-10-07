@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
-import { Container, Form, Titulo, Label, Input, Botao } from "./styles";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Container, Form, Titulo, Label, Input, Botao } from "./styled";
 
 const Cadastro = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [formValido, setFormValido] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [erro, setErro] = useState("");
+  const [sucesso, setSucesso] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const emailValido =
@@ -16,14 +22,51 @@ const Cadastro = () => {
     setFormValido(emailValido && senhaValida && nomeValido);
   }, [nome, email, senha]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Cadastro realizado com sucesso!");
+    setLoading(true);
+    setErro("");
+    setSucesso("");
+    try {
+      const response = await axios.post("http://localhost:3001/cadastrar", {
+        nome,
+        email,
+        senha,
+      });
+      if (response.status === 201 || response.status === 200) {
+        setSucesso(
+          "Cadastro realizado com sucesso! Redirecionando para login..."
+        );
+        setNome("");
+        setEmail("");
+        setSenha("");
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
+      } else {
+        setErro("Falha ao cadastrar. Tente novamente.");
+      }
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setErro(error.response.data.message);
+      } else {
+        setErro("Erro de rede ou servidor. Tente novamente mais tarde.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
+        {loading && <p>Enviando dados...</p>}
+        {erro && <p style={{ color: "red" }}>{erro}</p>}
+        {sucesso && <p style={{ color: "green" }}>{sucesso}</p>}
         <Titulo>Cadastro Connexa</Titulo>
 
         <Label htmlFor="nome">Nome completo</Label>
