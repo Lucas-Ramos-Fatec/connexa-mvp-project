@@ -19,7 +19,6 @@ const Cadastro = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Cadastro realizado com sucesso!");
-    // Aqui pode entrar sua lógica de envio para backend/API
   };
 
   return (
